@@ -1,0 +1,4 @@
+/* App specific styling not needed as index.css handles layout context */
+.App {
+  width: 100%;
+}

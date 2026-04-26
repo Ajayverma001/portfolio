@@ -1,0 +1,84 @@
+.projects-section {
+  position: relative;
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.project-card {
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  padding: 3rem;
+  border-left: 4px solid transparent;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+  border-left-color: var(--neon-blue);
+  box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
+}
+
+.project-content {
+  flex: 1;
+}
+
+.project-title {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.project-card:hover .project-title {
+  color: var(--neon-blue);
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}
+
+.project-desc {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tech-tag {
+  padding: 0.5rem 1rem;
+  background: rgba(157, 78, 221, 0.1);
+  color: var(--neon-purple);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid rgba(157, 78, 221, 0.3);
+}
+
+.project-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.icon-link {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.icon-link:hover {
+  color: var(--neon-blue);
+  background: rgba(0, 243, 255, 0.1);
+}

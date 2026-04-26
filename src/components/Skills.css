@@ -1,0 +1,100 @@
+.skills-section {
+  position: relative;
+}
+
+.skills-bento {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.skill-category-card {
+  padding: 2.5rem;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-top: 2px solid transparent;
+}
+
+/* Hover effects */
+.skill-category-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-top: 2px solid var(--cat-color);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px var(--cat-color) inset;
+}
+
+body.light-mode .skill-category-card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 0 10px var(--cat-color) inset;
+}
+
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cat-icon-wrapper {
+  color: var(--cat-color);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.skill-category-card:hover .cat-icon-wrapper {
+  transform: rotate(10deg) scale(1.1);
+  background: var(--cat-color);
+  color: #fff;
+  box-shadow: 0 0 15px var(--cat-color);
+}
+
+.cat-header h3 {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.cat-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.skill-chip {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.skill-chip:hover {
+  color: #fff;
+  background: var(--cat-color);
+  border-color: var(--cat-color);
+  box-shadow: 0 0 15px var(--cat-color);
+  transform: translateY(-2px);
+}
+
+body.light-mode .skill-chip {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 900px) {
+  .skills-bento {
+    grid-template-columns: 1fr;
+  }
+}

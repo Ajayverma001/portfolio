@@ -14,7 +14,7 @@ const Certifications = () => {
       date: '14/07/2025',
       link: '#',
       color: 'var(--neon-blue)',
-      image: 'Full Stack Web Development Certificate.png' // Placeholder image
+      image: 'image/Full Stack Web Development Certificate.png' // Placeholder image
     },
     {
       title: 'Apply AI: Analyze Customer Reviews',
@@ -22,7 +22,7 @@ const Certifications = () => {
       date: '3/04/2026',
       link: '#',
       color: 'var(--neon-purple)',
-      image: 'c2.png' // Placeholder image
+      image: 'image/c2.png' // Placeholder image
     },
     {
       title: 'C Programming',
@@ -30,7 +30,7 @@ const Certifications = () => {
       date: '17/06/2024',
       link: '#',
       color: 'var(--neon-green)', // Or any other neon color
-      image: 'C Programming.png' // Update this with your image name
+      image: 'image/C Programming.png' // Update this with your image name
     },
     {
       title: 'Add 4th Certificate Title Here',

@@ -58,7 +58,7 @@ I am always eager to learn new technologies, explore innovative ideas, and conti
               <div className="image-wrapper glow-on-hover">
                 {/* Placeholder Image - The user can change the src to their actual photo */}
                 <img 
-                  src="ajaypt.jpeg" 
+                  src="image/ajaypt.jpeg" 
                   alt="Ajay Verma" 
                   className="profile-photo"
                 />

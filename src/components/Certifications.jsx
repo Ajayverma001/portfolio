@@ -33,12 +33,12 @@ const Certifications = () => {
       image: '/image/C Programming.png' // Update this with your image name
     },
     {
-      title: 'Add 4th Certificate Title Here',
-      issuer: 'Issuer Name Here',
-      date: 'MM/DD/YYYY',
+      title: 'From Sensors to Intelligence: loT Meets GenAl on',
+      issuer: 'Tinker Stream Innovations, Nagpur',
+      date: '8/05/2026 & 9/05/2026',
       link: '#',
       color: 'var(--neon-orange)', // Or any other neon color
-      image: 'placeholder4.png' // Update this with your image name
+      image: 'image/IOT.jpeg' // Update this with your image name
     }
   ];
 

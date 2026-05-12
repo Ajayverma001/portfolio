@@ -1,78 +1,180 @@
-import { motion } from 'framer-motion';
-import { ChevronRight, Download } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import './Hero.css';
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { Code2, Terminal, Database, Server, Cpu, Globe } from "lucide-react";
+import "./Hero.css";
 
 const Hero = () => {
-  const [text, setText] = useState('');
-  const fullText = "Building Smart and Scalable Web Solutions";
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const scrollSmooth = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Header - Fades out fast
+  const headerScale = useTransform(scrollSmooth, [0, 0.25], [1, 0.8]);
+  const headerOpacity = useTransform(scrollSmooth, [0, 0.2], [1, 0]);
+  const headerY = useTransform(scrollSmooth, [0, 0.3], [0, -50]);
+
+  // Phone - Sized to viewport
+  const phoneScale = useTransform(scrollSmooth, [0, 0.5], [0.8, 1]);
+  const phoneY = useTransform(scrollSmooth, [0, 0.5], ["50%", "5%"]); 
   
-  useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      setText(fullText.slice(0, index));
-      index++;
-      if (index > fullText.length) clearInterval(timer);
-    }, 100);
-    return () => clearInterval(timer);
-  }, []);
+  // Cards - Tight cluster
+  const cardsOpacity = useTransform(scrollSmooth, [0.35, 0.5], [0, 1]);
+  
+  const card1X = useTransform(scrollSmooth, [0.4, 0.8], [0, -320]);
+  const card1Y = useTransform(scrollSmooth, [0.4, 0.8], [0, -100]);
+  const card2X = useTransform(scrollSmooth, [0.4, 0.8], [0, -360]);
+  const card2Y = useTransform(scrollSmooth, [0.4, 0.8], [0, 80]);
+  const card3X = useTransform(scrollSmooth, [0.4, 0.8], [0, -320]);
+  const card3Y = useTransform(scrollSmooth, [0.4, 0.8], [0, 260]);
+
+  const card4X = useTransform(scrollSmooth, [0.4, 0.8], [0, 320]);
+  const card4Y = useTransform(scrollSmooth, [0.4, 0.8], [0, -80]);
+  const card5X = useTransform(scrollSmooth, [0.4, 0.8], [0, 360]);
+  const card5Y = useTransform(scrollSmooth, [0.4, 0.8], [0, 100]);
+  const card6X = useTransform(scrollSmooth, [0.4, 0.8], [0, 320]);
+  const card6Y = useTransform(scrollSmooth, [0.4, 0.8], [0, 280]);
+
+  const bottomContentOpacity = useTransform(scrollSmooth, [0.7, 0.9], [0, 1]);
 
   return (
-    <section id="home" className="hero-section">
-      {/* Background Particles/Glows */}
-      <div className="glow-sphere sphere-1"></div>
-      <div className="glow-sphere sphere-2"></div>
-
-      <div className="container hero-content">
-        <motion.p 
-          className="greeting"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Hi there, I'm
-        </motion.p>
+    <div ref={containerRef} className="animated-hero-wrapper" id="home">
+      <div className="animated-hero-sticky">
         
-        <motion.h1 
-          className="name"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+        {/* Heading */}
+        <motion.div
+          style={{ scale: headerScale, opacity: headerOpacity, y: headerY }}
+          className="animated-hero-header"
         >
-          Ajay Verma
-        </motion.h1>
-        
-        <motion.h2 
-          className="role"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          <h1 className="animated-hero-title">
+            Reimagine How <br /> You Interact With <br /> The Web
+          </h1>
+        </motion.div>
+
+        {/* Phone & Cards Container */}
+        <motion.div
+          style={{ 
+            scale: phoneScale, 
+            top: phoneY,
+            translateY: "-20%"
+          }}
+          className="animated-phone-container"
         >
-          Software Engineer <span className="highlight">&</span> Web Developer
-        </motion.h2>
+          {/* Cards */}
+          <FloatingCard style={{ opacity: cardsOpacity, x: card1X, y: card1Y, rotate: -6 }} name="React.js" type="Frontend" amount="UI/UX" iconColor="bg-yellow" Icon={Globe} />
+          <FloatingCard style={{ opacity: cardsOpacity, x: card2X, y: card2Y, rotate: -3 }} name="Node.js" type="Backend" amount="API" iconColor="bg-gray" Icon={Server} />
+          <FloatingCard style={{ opacity: cardsOpacity, x: card3X, y: card3Y, rotate: -4 }} name="MongoDB" type="Database" amount="NoSQL" iconColor="bg-orange" Icon={Database} />
+          <FloatingCard style={{ opacity: cardsOpacity, x: card4X, y: card4Y, rotate: 6 }} name="Tailwind" type="Styling" amount="CSS" iconColor="bg-blue" Icon={Code2} />
+          <FloatingCard style={{ opacity: cardsOpacity, x: card5X, y: card5Y, rotate: 3 }} name="TypeScript" type="Language" amount="Types" iconColor="bg-purple" Icon={Terminal} />
+          <FloatingCard style={{ opacity: cardsOpacity, x: card6X, y: card6Y, rotate: 4 }} name="Next.js" type="Framework" amount="SSR" iconColor="bg-green" Icon={Cpu} />
 
-        <div className="tagline-container">
-          <p className="tagline">
-            {text}<span className="cursor">|</span>
-          </p>
-        </div>
+          {/* iPhone Frame */}
+          <div className="iphone-frame">
+             <div className="iphone-notch" />
+             <div className="iphone-screen">
+              <div className="iphone-content">
+                <div className="iphone-status-bar">
+                  <span className="time">9:41</span>
+                  <div className="icons">
+                    <Globe size={11} fill="currentColor" />
+                    <div className="battery" />
+                  </div>
+                </div>
+                
+                <h2 className="iphone-title">Ajay Verma</h2>
+                <p className="iphone-subtitle">Software Engineer</p>
+                
+                <div className="iphone-code-blocks">
+                  <div className="code-block">
+                    <div className="code-header">
+                      <div className="code-dot red"></div>
+                      <div className="code-dot yellow"></div>
+                      <div className="code-dot green"></div>
+                    </div>
+                    <pre className="code-body">
+                      <code>
+                        <span className="keyword">const</span> <span className="variable">developer</span> = {'{'} <br/>
+                        &nbsp;&nbsp;name: <span className="string">'Ajay'</span>,<br/>
+                        &nbsp;&nbsp;skills: [<span className="string">'React'</span>, <span className="string">'Node'</span>],<br/>
+                        &nbsp;&nbsp;status: <span className="string">'Available'</span><br/>
+                        {'}'};
+                      </code>
+                    </pre>
+                  </div>
 
+                  <div className="code-block action-block">
+                    <div className="flex-row">
+                      <div className="action-icon">
+                        <Terminal size={14} color="#fff" />
+                      </div>
+                      <div className="action-text">
+                        <p className="primary-text">Execute</p>
+                        <p className="secondary-text">buildPortfolio()</p>
+                      </div>
+                      <div className="action-value">Running...</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <button className="iphone-btn" onClick={() => document.getElementById('projects')?.scrollIntoView()}>
+                  View Projects
+                </button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Bottom Content */}
         <motion.div 
-          className="cta-buttons"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          style={{ opacity: bottomContentOpacity }}
+          className="animated-hero-bottom"
         >
-          <a href="#projects" className="btn btn-primary glow-on-hover">
-            View Projects <ChevronRight size={20} />
-          </a>
-          <a href="#contact" className="btn btn-secondary glow-on-hover">
-            Contact Me <Download size={20} />
-          </a>
+          <p className="bottom-desc">
+            From modern web apps to scalable backends — explore my digital universe.
+          </p>
+          <button className="bottom-btn" onClick={() => document.getElementById('contact')?.scrollIntoView()}>
+            Let's Collaborate
+          </button>
+          <div className="bottom-logos">
+             <div className="logo-dots">
+                <div className="logo-dot" />
+                <div className="logo-dot" />
+                <div className="logo-dot" />
+             </div>
+             <p className="bottom-note">Available for new opportunities</p>
+          </div>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 };
+
+const FloatingCard = ({ style, name, type, amount, iconColor, Icon }) => (
+  <motion.div 
+    style={style}
+    className="floating-card"
+  >
+    <div className="fc-content">
+      <div className={`fc-icon-wrap ${iconColor}`}>
+        <Icon size={16} />
+      </div>
+      <div className="fc-text">
+        <p className="fc-name">{name}</p>
+        <p className="fc-type">{type}</p>
+      </div>
+      <div className="fc-amount-box">
+        <p className="fc-amount">{amount}</p>
+        <p className="fc-hash">100%</p>
+      </div>
+    </div>
+  </motion.div>
+);
 
 export default Hero;

@@ -14,7 +14,7 @@ const Certifications = () => {
       date: '14/07/2025',
       link: '#',
       color: 'var(--neon-blue)',
-      image: '/image/Full Stack Web Development Certificate.png' // Placeholder image
+      image: '/image/Full Stack Web Development Certificate.png'
     },
     {
       title: 'Apply AI: Analyze Customer Reviews',
@@ -22,23 +22,31 @@ const Certifications = () => {
       date: '3/04/2026',
       link: '#',
       color: 'var(--neon-purple)',
-      image: '/image/c2.png' // Placeholder image
+      image: '/image/c2.png'
     },
     {
       title: 'C Programming',
       issuer: 'sheryians coding school',
       date: '17/06/2024',
       link: '#',
-      color: 'var(--neon-green)', // Or any other neon color
-      image: '/image/C Programming.png' // Update this with your image name
+      color: 'var(--neon-green)',
+      image: '/image/C Programming.png'
     },
     {
       title: 'From Sensors to Intelligence: loT Meets GenAl on',
       issuer: 'Tinker Stream Innovations, Nagpur',
       date: '8/05/2026 & 9/05/2026',
       link: '#',
-      color: 'var(--neon-orange)', // Or any other neon color
-      image: 'image/IOT.jpeg' // Update this with your image name
+      color: 'var(--neon-orange)',
+      image: 'image/IOT.jpeg'
+    },
+    {
+      title: 'Successfully developed the "SEO - SISTec Event Organizer" resource management portal.',
+      issuer: 'Sagar Institute of Science and Technology',
+      date: '02/05/2026',
+      link: '#',
+      color: 'var(--neon-pink)',
+      image: '/image/seo.jpeg'
     }
   ];
 
@@ -68,7 +76,6 @@ const Certifications = () => {
               transition={{ duration: 0.7, delay: index * 0.2 }}
               style={{ '--cert-color': cert.color }}
             >
-              {/* Decorative side border matching holographic style */}
               <div className="ticket-edge-left"></div>
               
               <div className="cert-top">
@@ -92,13 +99,12 @@ const Certifications = () => {
                 <button 
                   onClick={() => setSelectedCert(cert)} 
                   className="cert-link glow-on-hover"
-                  style={{ border: 'none', cursor: 'pointer' }}
+                  style={{ border: 'none', background: 'none', color: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}
                 >
                   View Credential <ExternalLink size={18} />
                 </button>
               </div>
               
-              {/* Shine effect div */}
               <div className="ticket-shine"></div>
             </motion.div>
           ))}
@@ -122,7 +128,6 @@ const Certifications = () => {
         )}
       </div>
 
-      {/* Modal for viewing certificate image */}
       <AnimatePresence>
         {selectedCert && (
           <motion.div 

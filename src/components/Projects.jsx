@@ -11,6 +11,12 @@ const Projects = () => {
             links: { live: 'https://seo.sistec.ac.in/' }
         },
         {
+            title: 'SISTec CSE Operations & Progress Engine',
+            description: 'The unified student ecosystem. Empowering innovators through placements, elite rankings, and project showcases on a world-class platform.',
+            techStack: ['React.js', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
+            links: { live: 'https://scope.sistec.ac.in/' }
+        },
+        {
             title: 'HallucinationDetector',
             description: 'Hallucination detection system that compares outputs from multiple AI models to evaluate response reliability and accuracy.',
             techStack: ['React.js', 'TailwindCSS', 'Node.js', 'MongoDB'],
